@@ -1,5 +1,5 @@
 # Coiffe
-## Alexia Leong, Lynne Wang, Lily Yan
+## Alexia Leong :dancer:, Lynne Wang :neutral_face:, Lily Yan :tennis:
 ## Lab03
 
 ### Decisions and Time Complexity
