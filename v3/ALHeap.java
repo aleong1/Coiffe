@@ -1,3 +1,10 @@
+/*
+  Coiffe -- Alexia Leong, Lynne Wang, Lily Yan
+  APCS2 pd1
+  HW49 -- Sink || Swim
+  2018-05-14
+ */
+
 /*****************************************************
  * class ALHeap
  * SKELETON
@@ -16,7 +23,8 @@ public class ALHeap
      * default constructor  ---  inits empty heap
      *****************************************************/
     public ALHeap() 
-    { 
+    {
+	_heap = new ArrayList<Integer>();
     }
 
 
@@ -28,7 +36,10 @@ public class ALHeap
      * b) ASCII representation of the tree (more complicated, more fun)
      *****************************************************/
     public String toString() 
-    { 
+    {
+	String s = "";
+	for (Integer i: _heap) s += i + " ";
+	return s;
     }//O(?)
 
 
@@ -37,8 +48,9 @@ public class ALHeap
      * Returns true if no meaningful elements in heap, false otherwise
      *****************************************************/
     public boolean isEmpty()
-    { 
-    }//O(?)
+    {
+	return _heap.size() == 0;
+    }//O(1)
 
 
     /*****************************************************
@@ -47,8 +59,9 @@ public class ALHeap
      * Postcondition: Heap remains unchanged.
      *****************************************************/
     public Integer peekMin()  //return the root
-    { 
-    }//O(?)
+    {
+        return _heap.get(0);
+    }//O(1)
 
 
     /*****************************************************
@@ -57,8 +70,16 @@ public class ALHeap
      * Postcondition: Tree exhibits heap property.
      *****************************************************/
     public void add( Integer addVal )
-    { 
-    }//O(?)
+    {
+	_heap.add(addVal);
+	int currentIndex = _heap.size()-1;
+
+	while (currentIndex > 0) {
+	    int parentIndex = (currentIndex-1)/2;
+	    if (_heap.get(parentIndex).compareTo(_heap.get(currentIndex)) > 0) swap(currentIndex, parentIndex);
+	    currentIndex = parentIndex;
+	}
+    }//O(logn)
 
 
     /*****************************************************
@@ -67,7 +88,24 @@ public class ALHeap
      * Postcondition: Tree maintains heap property.
      *****************************************************/
     public Integer removeMin()   //remove the root
-    { 
+    {
+	if (_heap.size() == 0) return null; //if heap is empty
+	
+        Integer min = _heap.remove(0);
+	
+	if (_heap.size() == 0) return min; //if heap had only one element
+	
+	swap(0, _heap.size()-1);
+        int currentIndex = 0;
+	int childIndex = minChildPos(currentIndex);
+	System.out.println(childIndex);
+
+	while (childIndex != -1) {
+	    if (_heap.get(childIndex).compareTo(_heap.get(currentIndex)) < 0) swap(currentIndex, childIndex);
+	    currentIndex = childIndex;
+	    childIndex = minChildPos(currentIndex);
+	}
+	return min;
     }//O(?)
 
 
@@ -78,7 +116,13 @@ public class ALHeap
      * Postcondition: Tree unchanged
      *****************************************************/
     private int minChildPos( int pos )
-    { 
+    {
+	int leftChild = 2*pos + 1;
+	int rightChild = 2*pos + 2;
+	if (pos >= _heap.size() || 
+	    (leftChild >= _heap.size() && rightChild >= _heap.size())) return -1;
+        if (_heap.get(leftChild).compareTo(_heap.get(rightChild)) <= 0) return leftChild;
+	return rightChild;
     }//O(?)
   
 
@@ -103,7 +147,6 @@ public class ALHeap
     //main method for testing
     public static void main( String[] args )
     {
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	  ALHeap pile = new ALHeap();
 
 	  pile.add(2);
@@ -149,6 +192,7 @@ public class ALHeap
 	  System.out.println(pile);
 	  System.out.println("removing " + pile.removeMin() + "...");
 	  System.out.println(pile);
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     }//end main()
 
