@@ -29,16 +29,16 @@ public class ALHeap
 
     /*****************************************************
      * toString()  ---  overrides inherited method
-     * Returns either 
+     * Returns either
      * a) a level-order traversal of the tree (simple version)
      * b) ASCII representation of the tree (more complicated, more fun)
      *****************************************************/
-    public String toString() 
+    public String toString()
     {
 	String s = "";
 	/*
 	int numBranches = 1;
-	
+
         for (int start = 0; start < _heap.size(); start = 2*start+1) {
 	    s += "\n";
 	    for (int ctr = start; ctr < _heap.size() && ctr < 2*start+1; ctr ++) {
@@ -84,7 +84,7 @@ public class ALHeap
 
 
     /*****************************************************
-     * add(Integer) 
+     * add(Integer)
      * Inserts an element in the heap
      * Postcondition: Tree exhibits heap property.
      *****************************************************/
@@ -109,11 +109,11 @@ public class ALHeap
     public Integer removeMin()   //remove the root
     {
 	if (_heap.size() == 0) return null; //if size of heap is 0
-	
+
 	Integer min = new Integer(_heap.remove(0)); //storing val to be removed
 
 	if (_heap.size() == 0) return min; //if size was 1, no need to rearrange anything in the heap
-	
+
 	_heap.add(0, _heap.remove(_heap.size()-1)); //putting last leaf as root
 	int currentIndex = 0;
 	int childIndex = minChildPos(0);
@@ -131,7 +131,7 @@ public class ALHeap
 
     /*****************************************************
      * minChildPos(int)  ---  helper fxn for removeMin()
-     * Returns index of least child, or 
+     * Returns index of least child, or
      * -1 if no children, or if input pos is not in ArrayList
      * Postcondition: Tree unchanged
      *****************************************************/
@@ -143,7 +143,7 @@ public class ALHeap
 	if (minOf(_heap.get(leftChild), _heap.get(rightChild)).equals(_heap.get(leftChild))) return leftChild;
 	return rightChild;
     }//O(1)
-  
+
 
     //************ aux helper fxns ***************
     private Integer minOf( Integer a, Integer b )
@@ -172,14 +172,12 @@ public class ALHeap
     int currentIndex = 0;
     int childIndex = minChildPos(currentIndex);
     System.out.println(childIndex);
->>>>>>> db6f1effd89007832aed7f78745682a617ab1f63
 
     while (childIndex != -1) {
       if (_heap.get(childIndex).compareTo(_heap.get(currentIndex)) < 0) swap(currentIndex, childIndex);
       currentIndex = childIndex;
       childIndex = minChildPos(currentIndex);
     }
-<<<<<<< HEAD
     //********************************************
 
 
@@ -328,6 +326,5 @@ public class ALHeap
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
->>>>>>> db6f1effd89007832aed7f78745682a617ab1f63
 
 }//end class ALHeap
