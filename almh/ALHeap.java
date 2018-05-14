@@ -1,15 +1,8 @@
 /*
-<<<<<<< HEAD
-  Coiffe -- Alexia Leong, Lynne Wang, Lily Yan
-  APCS2 pd1
-  HW49 -- Sink || Swim
-  2018-05-14
-=======
 Coiffe -- Alexia Leong, Lynne Wang, Lily Yan
 APCS2 pd1
 HW49 -- Sink || Swim
 2018-05-14
->>>>>>> db6f1effd89007832aed7f78745682a617ab1f63
 */
 
 /*****************************************************
@@ -34,62 +27,6 @@ public class ALHeap
     _heap = new ArrayList<Integer>();
   }
 
-
-
-  /*****************************************************
-  * toString()  ---  overrides inherited method
-  * Returns either
-  * a) a level-order traversal of the tree (simple version)
-  * b) ASCII representation of the tree (more complicated, more fun)
-  *****************************************************/
-  public String toString()
-  {
-    String s = "";
-    for (Integer i: _heap) s += i + " ";
-    return s;
-  }//O(?)
-
-
-  /*****************************************************
-  * boolean isEmpty()
-  * Returns true if no meaningful elements in heap, false otherwise
-  *****************************************************/
-  public boolean isEmpty()
-  {
-    return _heap.size() == 0;
-  }//O(1)
-
-
-  /*****************************************************
-  * Integer peekMin()
-  * Returns min value in heap
-  * Postcondition: Heap remains unchanged.
-  *****************************************************/
-  public Integer peekMin()  //return the root
-  {
-    return _heap.get(0);
-  }//O(1)
-
-
-  /*****************************************************
-  * add(Integer)
-  * Inserts an element in the heap
-  * Postcondition: Tree exhibits heap property.
-  *****************************************************/
-  public void add( Integer addVal )
-  {
-    _heap.add(addVal);
-    int currentIndex = _heap.size()-1;
-
-    while (currentIndex > 0) {
-      int parentIndex = (currentIndex-1)/2;
-      if (_heap.get(parentIndex).compareTo(_heap.get(currentIndex)) > 0) swap(currentIndex, parentIndex);
-      currentIndex = parentIndex;
-    }
-  }//O(logn)
-
-<<<<<<< HEAD
-    
     /*****************************************************
      * toString()  ---  overrides inherited method
      * Returns either 
@@ -153,10 +90,10 @@ public class ALHeap
      *****************************************************/
     public void add( Integer addVal )
     {
-	_heap.add(addVal);
+	_heap.add(addVal); //adding new leaf such that heap is still complete
 	int currentIndex = _heap.size()-1;
 
-	while (currentIndex > 0) {
+	while (currentIndex > 0) { //rearranging tree until new node is at legal position
 	    int parentIndex = (currentIndex-1)/2;
 	    if (_heap.get(parentIndex).compareTo(_heap.get(currentIndex)) > 0) swap(currentIndex, parentIndex);
 	    currentIndex = parentIndex;
@@ -181,6 +118,7 @@ public class ALHeap
 	int currentIndex = 0;
 	int childIndex = minChildPos(0);
 
+	//rearranging tree until new root is at legal position
 	while (childIndex != -1) { //while current node still has children
 	    if (_heap.get(childIndex).compareTo(_heap.get(currentIndex)) < 0) swap(currentIndex, childIndex);
 	    currentIndex = childIndex;
@@ -188,7 +126,6 @@ public class ALHeap
 	}
 	return min;
 
-	
     }//O(logn)
 
 
