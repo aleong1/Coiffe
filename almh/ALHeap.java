@@ -35,32 +35,9 @@ public class ALHeap
      *****************************************************/
     public String toString()
     {
-	String s = "";
-	/*
-	  int numBranches = 1;
-
-	  for (int start = 0; start < _heap.size(); start = 2*start+1) {
-	  s += "\n";
-	  for (int ctr = start; ctr < _heap.size() && ctr < 2*start+1; ctr ++) {
-	  s += _heap.get(ctr) + " ";
-	  }
-	  if (2*start+1 < _heap.size()) {
-	  s += "\n" + multiplyStrings(numBranches, "/\\");
-	  numBranches *= 2;
-	  }
-	  }
-	*/
-
 	for (Integer i: _heap) s += i + " ";
 	return s;
-    }//O(?)
-
-    //toString() helper
-    private String multiplyStrings(int n, String s) {
-	String ans = "";
-	for (int ctr = 0; ctr < n; ctr ++) ans += s;
-	return ans;
-    }
+    }//O(n)
 
     /*****************************************************
      * boolean isEmpty()
@@ -212,8 +189,6 @@ public class ALHeap
 	System.out.println(pile);
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-	//System.out.println("      1\n     /\\\n    4 2\n   /\\ /\\\n  5 7 6 3\n /\\/\n8 7 10");
     }//end main()
 
 }//end class ALHeap
