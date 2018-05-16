@@ -18,5 +18,5 @@ Another way of writing these methods without following the API runtime specifica
 - [x] `add( Integer addVal )`
 - [x] `peekMin()`
 - [x] `removeMin()`
-- [x] `to.String()`
+- [x] `toString()`
 
