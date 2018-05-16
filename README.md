@@ -12,3 +12,11 @@ Another way of writing these methods without following the API runtime specifica
 * `boolean isEmpty()` -- O(1)
 * `String peekMin()` -- O(n)
 * `String removeMin()` -- O(n)
+
+### Heap Todo
+- [x] `isEmpty()`
+- [x] `add( Integer addVal )`
+- [x] `peekMin()`
+- [x] `removeMin()`
+- [x] `to.String()`
+
