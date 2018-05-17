@@ -43,6 +43,7 @@ public class RunMed {
      * balances heaps if they have a size difference >= 2
      *****************************************************/
     public void add(Integer newVal) {
+	
     }
 
     //main method
